@@ -1,13 +1,15 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const todoSchema = new Schema({
-  name : {type:String, required: True},
-  name_en: {type:String, required: True},
-  category: {type:String, required: True},
-  image:{type:String, required: True},
-  location: {type:String, required: True},
-  phone: {type:String, required: True},
-  google_map: {type:String, required: True},
-  rating: {type:Number, required: True},
-  description: {type:String, required: True}
+const restaurantSchema = new Schema({
+  name : {type:String, required: true},
+  name_en: {type:String, required: true},
+  category: {type:String, required: true},
+  image:{type:String, required: true},
+  location: {type:String, required: true},
+  phone: {type:String, required: true},
+  google_map: {type:String, required: true},
+  rating: {type:Number, required: true},
+  description: {type:String, required: true}
 })
+
+module.exports = mongoose.model("Restaurant", restaurantSchema)

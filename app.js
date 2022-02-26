@@ -6,7 +6,6 @@ const exphbs = require('express-handlebars')
 // require files
 const restaurantList = require('./restaurant.json')
 const mongoose = require('mongoose')
-
 mongoose.connect('mongodb://localhost/restaurant-list')
 
 const db = mongoose.connection
