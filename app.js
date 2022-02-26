@@ -5,6 +5,7 @@ const app = express()
 const exphbs = require('express-handlebars')
 // require files
 const restaurantList = require('./restaurant.json')
+const restaurant = require('./models/restaurant')
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/restaurant-list')
 
@@ -26,13 +27,12 @@ app.use(express.static('public'))
 // define server releated variables 
 const port = 3000
 
-
-
-
-
 // route setting
 app.get('/',(req,res) => {
-  res.render('index',{restaurants: restaurantList.results})
+  restaurant.find()
+            .lean()
+            .then(restaurants => res.render('index',{restaurants}))
+            .catch(error => console.log(error))
 })
 app.get('/restaurants/:id', (req,res) => {
   console.log(req.params)
