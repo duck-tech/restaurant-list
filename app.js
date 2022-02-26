@@ -50,6 +50,7 @@ app.get('/restaurants/new' , (req,res) => {
 })
 
 app.post('/restaurants', (req,res) => {
+  console.log(req.body)
   Restaurant.create(req.body)
             .then(() => res.redirect('/'))
             .catch(error => console.log(error))
@@ -77,7 +78,7 @@ app.post('/restaurants/:id/edit', (req,res) => {
             .then(restaurant => {
               restaurant.name = req.body.name
               restaurant.name_en = req.body.name_en
-              // restaurant.category = req.body.category
+              restaurant.category = req.body.category
               restaurant.image = req.body.image
               restaurant.locatoin = req.body.location
               restaurant.phone = req.body.phone
