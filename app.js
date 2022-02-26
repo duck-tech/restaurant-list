@@ -34,6 +34,18 @@ app.get('/',(req,res) => {
             .then(restaurants => res.render('index',{restaurants}))
             .catch(error => console.log(error))
 })
+
+app.get('/restaurants/new' , (req,res) => {
+  return res.render('new')
+})
+
+app.post('/restaurants', (req,res) => {
+  restaurant.create(req.body)
+            .then(() => res.redirect('/'))
+            .catch(error => console.log(error))
+})
+
+
 app.get('/restaurants/:id', (req,res) => {
   console.log(req.params)
   const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.id)
