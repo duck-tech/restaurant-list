@@ -6,6 +6,9 @@ const exphbs = require('express-handlebars')
 // require files
 const restaurantList = require('./restaurant.json')
 const Restaurant = require('./models/restaurant')
+// 引用 body-parser
+const bodyParser = require('body-parser')
+
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/restaurant-list')
 
@@ -23,7 +26,8 @@ app.engine('handlebars',exphbs.engine({defaultLayout:'main'}))
 app.set('view engine', 'handlebars')
 // setting static files 
 app.use(express.static('public'))
-
+// 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
+app.use(bodyParser.urlencoded({ extended: true }))
 // define server releated variables 
 const port = 3000
 
@@ -33,6 +37,12 @@ app.get('/',(req,res) => {
             .lean()
             .then(restaurants => res.render('index',{restaurants}))
             .catch(error => console.log(error))
+})
+
+app.get('/search',(req,res) => {
+  const keyword = req.query.keyword.trim()
+  const restaurants = restaurantList.results.filter(restaurant => {return restaurant.name.toLowerCase().includes(keyword.toLowerCase()) || restaurant.category.includes(keyword)})
+  res.render('index',{restaurants:restaurants, keyword:keyword})
 })
 
 app.get('/restaurants/new' , (req,res) => {
@@ -53,11 +63,31 @@ app.get('/restaurants/:id', (req,res) => {
                   .catch(error => console.log(error))
 })
 
+app.get('/restaurants/:id/edit', (req,res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+                  .lean()
+                  .then((restaurant) => res.render('edit',{restaurant}))
+                  .catch(error => console.log(error))
+}) 
 
-app.get('/search',(req,res) => {
-  const keyword = req.query.keyword.trim()
-  const restaurants = restaurantList.results.filter(restaurant => {return restaurant.name.toLowerCase().includes(keyword.toLowerCase()) || restaurant.category.includes(keyword)})
-  res.render('index',{restaurants:restaurants, keyword:keyword})
+app.post('/restaurants/:id/edit', (req,res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+            .then(restaurant => {
+              restaurant.name = req.body.name
+              restaurant.name_en = req.body.name_en
+              // restaurant.category = req.body.category
+              restaurant.image = req.body.image
+              restaurant.locatoin = req.body.location
+              restaurant.phone = req.body.phone
+              restaurant.google_map = req.body.google_map
+              restaurant.rating = req.body.rating
+              restaurant.description = req.body.description
+              return restaurant.save()
+             })
+             .then(() => res.redirect(`/restaurants/${id}`))
+             .catch(error => console.log(error))
 })
 
 // start and listen server
