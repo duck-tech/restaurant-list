@@ -11,7 +11,7 @@ router.get('/',(req,res) => {
 })
 
 router.get('/search',(req,res) => {
-  const keyword = req.query.keyword.trim
+  const keyword = req.query.keyword.trim()
   const sortCriteria = req.query.sort
   const sortMethod = {}
 
