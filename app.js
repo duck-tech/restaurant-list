@@ -8,7 +8,7 @@ const restaurantList = require('./restaurant.json')
 const Restaurant = require('./models/restaurant')
 // 引用 body-parser
 const bodyParser = require('body-parser')
-
+const methodOverride = require('method-override') 
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/restaurant-list')
 
@@ -28,6 +28,7 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 // 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 // define server releated variables 
 const port = 3000
 
@@ -72,7 +73,7 @@ app.get('/restaurants/:id/edit', (req,res) => {
                   .catch(error => console.log(error))
 }) 
 
-app.post('/restaurants/:id/edit', (req,res) => {
+app.put('/restaurants/:id', (req,res) => {
   const id = req.params.id
   return Restaurant.findById(id)
             .then(restaurant => {
@@ -91,7 +92,7 @@ app.post('/restaurants/:id/edit', (req,res) => {
              .catch(error => console.log(error))
 })
 
-app.post('/restaurants/:id/delete', (req, res) => {
+app.delete('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .then(restaurant => restaurant.remove())
