@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Restaurant = require('../../models/restaurant')
+const restaurantList = require('../../restaurant.json')
 
 router.get('/new' , (req,res) => {
   return res.render('new')

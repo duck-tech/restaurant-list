@@ -3,23 +3,12 @@ const express = require('express')
 const app = express()
 // require express-handlebars here
 const exphbs = require('express-handlebars')
-// require files
-const restaurantList = require('./restaurant.json')
-const Restaurant = require('./models/restaurant')
 // 引用 body-parser
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override') 
-const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/restaurant-list')
-const routes = require('./routes')
-const db = mongoose.connection
-db.on('error', () => {
-  console.log('mongodb error!')
-})
 
-db.once('open', () => {
-  console.log('mongodb connected')
-})
+const routes = require('./routes')
+require('./config/mongoose')
 
 // setting template engine
 app.engine('handlebars',exphbs.engine({defaultLayout:'main'}))
@@ -36,5 +25,5 @@ const port = 3000
 
 // start and listen server
 app.listen(port, () => {
-  console.log(`Express is running on http://localhost:${port}`)
+console.log(`Express is running on http://localhost:${port}`)
 })
