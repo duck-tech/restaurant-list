@@ -28,6 +28,9 @@ router.get('/search',(req,res) => {
     case 'location':
       sortMethod['location'] = 'asc'
       break
+    case 'rating':
+      sortMethod['rating'] = 'desc'
+      break
     default:
       sortMethod['name'] = 'asc'
   }
