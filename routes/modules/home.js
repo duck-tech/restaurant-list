@@ -1,16 +1,18 @@
 const express = require('express')
 const router = express.Router()
-const restaurantList = require('../../restaurant.json')
 const Restaurant = require('../../models/restaurant')
 
 router.get('/',(req,res) => {
-  Restaurant.find()
+  const userId = req.user._id
+  Restaurant.find({userId})
             .lean()
+            .sort({_id : 'asc'})
             .then(restaurants => res.render('index',{restaurants}))
             .catch(error => console.log(error))
 })
 
 router.get('/search',(req,res) => {
+  const userId = req.user._id
   const keyword = req.query.keyword.trim()
   const sortCriteria = req.query.sort
   const sortMethod = {}
@@ -34,7 +36,7 @@ router.get('/search',(req,res) => {
     default:
       sortMethod['name'] = 'asc'
   }
-  Restaurant.find()
+  Restaurant.find({userId})
           .lean()
           .sort(sortMethod)
           .then(restaurants => {
