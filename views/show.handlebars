@@ -45,12 +45,11 @@
         class="btn btn-link btn-sm"
         >Details</button>
     </a>
-    <form action="./restaurants/{{ restaurant._id }}?_method=DELETE" method="POST" style="display: inline;">
-     <button
-      type="submit"
-      class="btn btn-danger btn-sm text-white"
-    >delete</button>
-  </form>    
-    </form>
+     <form action="/restaurants/{{ restaurant._id }}?_method=DELETE" method="POST" style="display: inline;">
+            <button
+              type="submit"
+              class="btn btn-danger btn-sm text-white"
+            >Delete</button>
+          </form>    
   </div>
 </div>
