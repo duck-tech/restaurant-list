@@ -47,7 +47,7 @@ router.put('/:id', (req,res) => {
   const userId = req.user._id
   const _id = req.params.id
   const {name, name_en, category, image, location, phone, google_map, rating, description} = req.body
-  return Restaurant.findById(id)
+  return Restaurant.findOne({_id,userId})
             .then(restaurant => {
               restaurant.name = name
               restaurant.name_en = name_en
