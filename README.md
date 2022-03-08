@@ -31,7 +31,7 @@ https://immense-gorge-86213.herokuapp.com/users/login
 
 1. 藉由 git clone 將專案下載至本地
 ```
-git clone https://github.com/WilliamTsou818/restaurant-list.git
+git clone https://github.com/duck-tech/restaurant-list.git
 ```
 2. 進入專案資料夾
 ```
