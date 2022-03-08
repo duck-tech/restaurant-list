@@ -1,4 +1,4 @@
-# :clinking_glasses: Restaurant List
+# Restaurant List
 
 此專案可以讓使用者瀏覽、搜尋特定的餐廳，並且可以點擊餐廳圖示瀏覽更詳細的餐廳資訊。 此外，也可以新增、刪除和修改餐廳資料。
 
@@ -20,13 +20,11 @@ https://immense-gorge-86213.herokuapp.com/users/login
 9. 使用者可以透過 FB 或註冊帳號登入
 
 ## Page view
+<img width="980" alt="image" src="https://user-images.githubusercontent.com/78743080/157157593-8816047a-52dd-4c4a-9635-4da6ef0bec3e.png">
 
-<img width="1099" alt="image" src="https://user-images.githubusercontent.com/78743080/157156004-a97cde55-c96d-4951-93b2-6c49c70018ae.png">
+<img width="709" alt="image" src="https://user-images.githubusercontent.com/78743080/157157552-125f606c-21e9-40d0-b0e8-597125739ab5.png">
 
-![image](https://github.com/0Trevor-Lin0/My-Restaurant-List/blob/main/public/img/Restaurant%20List%20-%202-3_A8.png)
-
-<img width="1216" alt="image" src="https://user-images.githubusercontent.com/78743080/157156059-75e71b5d-608f-440f-9c42-86fee931ba6d.png">
-
+<img width="1173" alt="image" src="https://user-images.githubusercontent.com/78743080/157157623-b1e3a32f-e148-443d-a8d7-4c8f3cfcc397.png">
 
 ## Getting Started
 
@@ -70,6 +68,6 @@ ps :thought_balloon: 環境變數在.env.example 檔案中，FACEBOOK_ID FACEBOO
 - mongoose:v6.2.3
 - mongoDB:v4.2.18
 
-## :raising_hand_man: Author
+## 🙋‍♀️: Author
 
 Kelly Wang 王聖晴
