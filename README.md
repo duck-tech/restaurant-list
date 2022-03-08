@@ -1,20 +1,23 @@
 # :clinking_glasses: Restaurant List
 
-此專案提供使用者新增自己喜愛的餐廳資料，並且透過篩選搜尋來尋找自己想去的餐廳，再透過點擊餐廳可以觀看詳細內容。
+此專案可以讓使用者瀏覽、搜尋特定的餐廳，並且可以點擊餐廳圖示瀏覽更詳細的餐廳資訊。 此外，也可以新增、刪除和修改餐廳資料。
+
+必須登入後才能使用，支援 Facebook 登入功能。
 
 ### :link: heroku 連結
 https://immense-gorge-86213.herokuapp.com/users/login
 
 ## Features
 
-- 使用者需註冊帳號或連動 facebook 帳號來登入使用
-- 使用者於首頁可以觀看到每家餐廳的店名、類別、排名
-- 使用者於首頁可以使用搜尋功能查詢指定的店家或類別
-- 使用者可以點擊餐廳來觀看詳細資訊，並且可以直接瀏覽餐廳地圖
-- 使用者可以點擊首頁的"+"圖案，新增餐廳資料
-- 使用者可以點擊"垃圾桶"圖案，刪除資料
-- 使用者可以點擊"鉛筆"圖案，進行指定餐廳資料修改
-- 使用者可以使用下拉式選單，進行指定選項排列
+1. 使用者可以新增一家餐廳
+2. 使用者可以瀏覽一家餐廳的詳細資訊
+3. 使用者可以瀏覽全部所有餐廳
+4. 使用者可以依據餐廳名稱與類別搜尋特定餐廳
+5. 使用者可以修改一家餐廳的資訊
+6. 使用者可以刪除一家餐廳
+7. 使用者可以選擇特定方式來排序餐廳顯示順序
+8. 使用者可以註冊帳號
+9. 使用者可以透過 FB 或註冊帳號登入
 
 ## Page view
 
@@ -27,32 +30,27 @@ https://immense-gorge-86213.herokuapp.com/users/login
 
 ## Getting Started
 
-1. Clone repository to your local computer
 
+1. 藉由 git clone 將專案下載至本地
 ```
-https://github.com/0Trevor-Lin0/My-Restaurant-List.git
+git clone https://github.com/WilliamTsou818/restaurant-list.git
 ```
-
-2. Install by npm
-
+2. 進入專案資料夾
 ```
-$ npm install
+cd restaurant-list
 ```
-
-3. Seeds
-
+3. 安裝套件
 ```
-$ npm run seed
+npm install
 ```
-
-4. Execute
-
+4. 加入種子資料
 ```
-$ npm run dev
+npm run seed
 ```
-
-Terminal show 'ok! it's running on http://localhost:3000'
-
+5. 啟動網頁伺服器
+```
+npm run dev
+```
 ps :thought_balloon: 環境變數在.env.example 檔案中，FACEBOOK_ID FACEBOOK_SECRET GOOGLE_MAP_API 請使用自己的憑證密碼。
 
 ### Test account
@@ -66,13 +64,12 @@ ps :thought_balloon: 環境變數在.env.example 檔案中，FACEBOOK_ID FACEBOO
 ## :toolbox: Built With
 
 - Visual Studio Code
-- Node.js: v10.15.0
-- Express: v4.17.1
-- Express-handlebars: v5.3.2
-- mongoose:v5.12.13
-- mongoDB:v4.2.14
-- Bootstrap: v4.6.0
+- Node.js: v14.16.0
+- Express: v4.17.3
+- Express-handlebars: v6.0.2
+- mongoose:v6.2.3
+- mongoDB:v4.2.18
 
 ## :raising_hand_man: Author
 
-Trevor Lin 林東泰
+Kelly Wang 王聖晴
